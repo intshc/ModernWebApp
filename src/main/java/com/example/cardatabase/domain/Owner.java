@@ -1,5 +1,7 @@
 package com.example.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,10 +12,8 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Owner {
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
-    private List<Car> cars;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,4 +27,7 @@ public class Owner {
         this.lastName = lastName;
     }
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
+    private List<Car> cars;
 }
