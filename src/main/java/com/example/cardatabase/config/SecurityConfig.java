@@ -1,6 +1,5 @@
 package com.example.cardatabase.config;
 
-import com.example.cardatabase.filter.AuthenticationFilter;
 import com.example.cardatabase.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,7 @@ public class SecurityConfig{
 
     private final UserDetailsServiceImpl userDetailsService;
     private final AuthenticationFilter authenticationFilter;
+    private final AuthEntryPoint authEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -34,6 +34,9 @@ public class SecurityConfig{
                 //login 엔드포인트에 대한 POST 요청은 보호되지 않음
                 .requestMatchers(HttpMethod.POST,"/login").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(authEntryPoint)
                 .and()
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

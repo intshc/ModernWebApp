@@ -1,4 +1,4 @@
-package com.example.cardatabase.filter;
+package com.example.cardatabase.config;
 
 import com.example.cardatabase.service.JwtService;
 import jakarta.servlet.FilterChain;
