@@ -20,7 +20,7 @@ Chapter 4: 스프링 부트로 RESTful 웹 서비스 만들기 ~ Chapter 5: 백�
 * __JWT__ 를  `Jwts.builder()` 형태로 만들고, `Jwts.parserBuilder()` 형태로 __검증하기__ 
 * __UserDetailsService__ 사용자 이름을 불러오기
 * __Authentication__ 유저 정보, 권한이 담겨있다.
-* __AuthenticationManager__ 유저 정보, 권한 불러오기
+* __AuthenticationManager__ 인증(Authentication)을 처리하는 핵심 인터페이스
 * __AuthenticationEntryPoint__ 상속받아서 __인증 실패시__ 커스터마이징 할 수 있다. <br>
   적용 방법은 __SecurityFilterChain__ 메서드에서 `http.authenticationEntryPoint()` 안에 담아두기
 * __CorsConfigurationSource__ HTTP 요청에 대해 사용자 인증 정보를 포함하지 않도록 설정
